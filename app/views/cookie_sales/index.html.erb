@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cookie Sales</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Sales</th>
+      <th>Sale date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cookie_sales.each do |cookie_sale| %>
+      <tr>
+        <td><%= cookie_sale.first_name %></td>
+        <td><%= cookie_sale.sales %></td>
+        <td><%= cookie_sale.sale_date %></td>
+        <td><%= link_to 'Show', cookie_sale %></td>
+        <td><%= link_to 'Edit', edit_cookie_sale_path(cookie_sale) %></td>
+        <td><%= link_to 'Destroy', cookie_sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cookie Sale', new_cookie_sale_path %>

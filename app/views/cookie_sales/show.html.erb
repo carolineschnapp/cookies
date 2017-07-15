@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @cookie_sale.first_name %>
+</p>
+
+<p>
+  <strong>Sales:</strong>
+  <%= @cookie_sale.sales %>
+</p>
+
+<p>
+  <strong>Sale date:</strong>
+  <%= @cookie_sale.sale_date %>
+</p>
+
+<%= link_to 'Edit', edit_cookie_sale_path(@cookie_sale) %> |
+<%= link_to 'Back', cookie_sales_path %>

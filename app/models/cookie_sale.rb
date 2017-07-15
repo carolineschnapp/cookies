@@ -1,0 +1,2 @@
+class CookieSale < ApplicationRecord
+end

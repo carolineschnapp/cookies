@@ -1,0 +1,32 @@
+<%= form_with(model: cookie_sale, local: true) do |form| %>
+  <% if cookie_sale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cookie_sale.errors.count, "error") %> prohibited this cookie_sale from being saved:</h2>
+
+      <ul>
+      <% cookie_sale.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, id: :cookie_sale_first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sales %>
+    <%= form.text_field :sales, id: :cookie_sale_sales %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sale_date %>
+    <%= form.date_select :sale_date, id: :cookie_sale_sale_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
