@@ -11,22 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :first_name %>
+  <label class="textfield">
     <%= form.text_field :first_name, id: :cookie_sale_first_name %>
-  </div>
+    <span class="textfield__label">First name</span>
+  </label>
 
-  <div class="field">
-    <%= form.label :sales %>
+  <label class="textfield">
     <%= form.text_field :sales, id: :cookie_sale_sales %>
-  </div>
+    <span class="textfield__label">Sales</span>
+  </label>
 
-  <div class="field">
+  <p class="dateselectfield">
     <%= form.label :sale_date %>
-    <%= form.date_select :sale_date, id: :cookie_sale_sale_date %>
-  </div>
+    <%= form.date_select :sale_date, order: [:day, :month, :year], with_css_classes: true, id: :cookie_sale_sale_date, class: 'select' %>
+  </p>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit %>
 <% end %>
