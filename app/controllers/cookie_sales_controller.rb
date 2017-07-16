@@ -30,6 +30,12 @@ class CookieSalesController < ApplicationController
       .group(:first_name)
       .order('sales_total DESC')
     # SELECT `cookie_sales`.`first_name`, SUM(sales_cents) AS sales_total FROM `cookie_sales` WHERE (`cookie_sales`.`first_name` != '') GROUP BY `cookie_sales`.`first_name` ORDER BY sales_total DESC
+    #
+    # SELECT count(DISTINCT first_name)
+    # FROM cookie_sales
+    # => 4
+    #
+    @salesmen_count = CookieSale.count('DISTINCT first_name')
   end
 
   # GET /cookie_sales/1
