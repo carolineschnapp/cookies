@@ -26,6 +26,26 @@
   </tbody>
 </table>
 
+<h4>Hall of fames</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th class="ta-right">Sales</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hall_of_fame.each.with_index(1) do |value, index| %>
+      <tr class=<%= 'fw-bold' if index < 3 %>>
+        <td><%= index %>. <%= value.first_name %></td>
+        <td class="money ta-right"><%= humanized_money_with_symbol(value.sales_total) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <br>
 
 <%= link_to 'New Cookie Sale', new_cookie_sale_path %>

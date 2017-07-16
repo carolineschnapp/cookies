@@ -5,6 +5,31 @@ class CookieSalesController < ApplicationController
   # GET /cookie_sales.json
   def index
     @cookie_sales = CookieSale.all
+    # SELECT first_name, sum(sales_cents)
+    # FROM cookie_sales
+    # WHERE first_name <> ''
+    # GROUP BY first_name
+    # ORDER BY sum(sales_cents) DESC
+    #
+    # @winners_with_sales_count = CookieSale
+    #   .where.not(first_name: '')
+    #   .group(:first_name)
+    #   .sum(:sales_cents)
+    #   .sort_by { |k,v| v }
+    #   .reverse
+    #
+    # SELECT first_name, SUM(sales_cents) AS sales_total
+    # FROM cookie_sales
+    # WHERE first_name <> ''
+    # GROUP BY first_name
+    # ORDER BY sales_total DESC
+    #
+    @hall_of_fame = CookieSale
+      .select(:first_name, 'SUM(sales_cents) AS sales_total')
+      .where.not(first_name: '')
+      .group(:first_name)
+      .order('sales_total DESC')
+    # SELECT `cookie_sales`.`first_name`, SUM(sales_cents) AS sales_total FROM `cookie_sales` WHERE (`cookie_sales`.`first_name` != '') GROUP BY `cookie_sales`.`first_name` ORDER BY sales_total DESC
   end
 
   # GET /cookie_sales/1
