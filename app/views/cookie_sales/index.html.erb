@@ -40,7 +40,7 @@
     <% @hall_of_fame.each.with_index(1) do |value, index| %>
       <tr class=<%= 'fw-bold' if index < 3 %>>
         <td><%= index %>. <%= value.first_name %></td>
-        <td class="money ta-right"><%= humanized_money_with_symbol(value.sales_total) %></td>
+        <td class="money ta-right"><%= humanized_money_with_symbol(value.sales_total / 100.0) %></td>
       </tr>
     <% end %>
   </tbody>
