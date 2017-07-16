@@ -46,6 +46,14 @@
   </tbody>
 </table>
 
+<h4>Salesmen</h4>
+
+<ul>
+  <% @salesmen.each do |name| %>
+    <li><%= name %></li>
+  <% end %>
+</ul>
+
 <br>
 
 <%= link_to 'New Cookie Sale', new_cookie_sale_path %>

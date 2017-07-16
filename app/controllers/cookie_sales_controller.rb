@@ -5,6 +5,7 @@ class CookieSalesController < ApplicationController
   # GET /cookie_sales.json
   def index
     @cookie_sales = CookieSale.all
+    #
     # SELECT first_name, sum(sales_cents)
     # FROM cookie_sales
     # WHERE first_name <> ''
@@ -29,6 +30,7 @@ class CookieSalesController < ApplicationController
       .where.not(first_name: '')
       .group(:first_name)
       .order('sales_total DESC')
+    #
     # SELECT `cookie_sales`.`first_name`, SUM(sales_cents) AS sales_total FROM `cookie_sales` WHERE (`cookie_sales`.`first_name` != '') GROUP BY `cookie_sales`.`first_name` ORDER BY sales_total DESC
     #
     # SELECT count(DISTINCT first_name)
@@ -36,6 +38,14 @@ class CookieSalesController < ApplicationController
     # => 4
     #
     @salesmen_count = CookieSale.count('DISTINCT first_name')
+    #
+    # If I want a listing of participants:
+    # SELECT DISTINCT first_name
+    # FROM cookie_sales
+    # WHERE first_name IS NOT NULL
+    #
+    @salesmen = CookieSale.pluck('DISTINCT first_name').reject(&:blank?)
+    # SELECT DISTINCT first_name FROM `cookie_sales`
   end
 
   # GET /cookie_sales/1
